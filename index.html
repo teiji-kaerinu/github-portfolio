@@ -40,6 +40,20 @@ body{font-family:Arial; background:#8abdd9; color:white; font-size: 20px;}
 .warning summary:hover {
     background: #332244;
 }
+.warning summary {
+    list-style: none;
+}
+
+.warning summary::before {
+    content: "▶";
+    display: inline-block;
+    margin-right: 10px;
+    transition: transform 0.2s;
+}
+
+.warning[open] summary::before {
+    transform: rotate(90deg);
+}
 .card{background:#6b2d7d; padding:15px; border-radius:10px;}
 .firstcard{background:#4188d4; padding:15px; border-radius:10px;}
 img{width:100%; border-radius:8px;}
