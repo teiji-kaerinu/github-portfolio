@@ -18,7 +18,7 @@ body{
     display: grid;
     grid-template-columns: 1fr;
     gap: 20px;
-    max-width: 2200px;
+    max-width: 2750px;
     margin: 0 auto;
 }
 .done{
@@ -88,20 +88,32 @@ body{
 }
 .card{
     background: rgba(107,45,125,0.3);
-    border: 1px solid rgba(167,139,250,0.3);
+    border: 3px solid rgba(167,139,250,0.3);
     padding: 15px;
     border-radius: 10px;
     }
 .firstcard{
     background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(167,139,250,0.3);
+    border: 5px solid rgba(167,139,250,0.3);
     padding: 15px;
     border-radius: 10px;
+}
+.flex-row{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+.flex-row img{
+    width: 900px;
+    flex-shrink: 0;
+}
+.flex-row p{
+    flex: 1;
 }
 table{border-collapse: collapse; width: 100%;}
 thead tr {border-bottom: 2px solid rgba(167,139,250,0.5);}
 th{color: #a78bfa; letter-spacing: 2px; padding:8px 12px; text-align:left;}
-tbody tr:hover{background: rgba(167,139,250,0.5);}
+tbody tr:hover{background: rgba(167,139,250,0.15);}
 td{padding: 10px 12px; border-bottom: 1px solid rgba(255, 255, 255,0.05);} 
 img{width:100%; border-radius:8px;}
 </style>
@@ -114,7 +126,7 @@ img{width:100%; border-radius:8px;}
 
     <section class="firstcard">
         <h2>俺と<span class="accentpurple">マブラヴ オルタネイティヴ</span></h2>
-        <div class="warning">
+        <details class="warning">
             <summary>
                 自分語りを多量に含んでいるので＊閲覧注意
             </summary>
@@ -188,10 +200,13 @@ img{width:100%; border-radius:8px;}
 
     <section class="card">
         <h2>個人的好きなキャラNo.3<span class="accentyellow">-篁唯依-</span></h2>
-        <img src="">
-        <p>譜代武家「篁家」現在当主。数年前、衛士訓練学校で寝食を共にした級友とともに、戦火に今まさに燃え尽きようとする帝都京都で防衛戦に参加。訓練兵の手腕では人類の宿敵BETAに叶うはずもなく、親友を目の前で惨殺され、「撃ってよ、唯依」……、最期の望みを弱さ所以に聞き入れることもできずただ震えるばかりでいた。心身を蝕むトラウマを抱える。<br>
-            あの惨劇から幾数年、戦術機を駆り戦場で躍進を重ね、中尉にまで階級を上げるなど譜代武家として殿下に恥じない振る舞いを続ける。しかし、今だ心の傷は癒えないでいる。それでも、篁家当主として、父に恥じない人間になるため、己の一振りを磨き続けていた。そんな時、突然国連軍開発チームへの出向を命じられる。それは、事実的な前線からの追放でもあった。ユウヤ・ブリッジスからつけられた呼称は「ジャパニーズドール」。
-        </p>
+
+        <div class="flex-row">
+            <img src="images/001.jpg">
+            <p>譜代武家「篁家」現在当主。数年前、衛士訓練学校で寝食を共にした級友とともに、戦火に今まさに燃え尽きようとする帝都京都で防衛戦に参加。訓練兵の手腕では人類の宿敵BETAに叶うはずもなく、親友を目の前で惨殺され、「撃ってよ、唯依」……、最期の望みを弱さ所以に聞き入れることもできずただ震えるばかりでいた。心身を蝕むトラウマを抱える。<br>
+                あの惨劇から幾数年、戦術機を駆り戦場で躍進を重ね、中尉にまで階級を上げるなど譜代武家として殿下に恥じない振る舞いを続ける。しかし、今だ心の傷は癒えないでいる。それでも、篁家当主として、父に恥じない人間になるため、己の一振りを磨き続けていた。そんな時、突然国連軍開発チームへの出向を命じられる。それは、事実的な前線からの追放でもあった。ユウヤ・ブリッジスからつけられた呼称は「ジャパニーズドール」。
+            </p>
+        </div>
     </section>
     
     
