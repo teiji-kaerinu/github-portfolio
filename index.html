@@ -155,14 +155,27 @@ td{padding: 10px 12px; border-bottom: 1px solid rgba(255, 255, 255,0.05);}
 img{width:100%; border-radius:8px;}
 /* 画面の幅が600px以下のとき(=スマホ)だけ、この中身を適用する */
 
-/* 画面の幅が600px以下のとき(=スマホ)だけ、この中身を適用する */
 @media (max-width: 600px) {
+
     body {
-        font-size: 16px;   /* スマホでは文字を小さく */
+        font-size: 16px;          /* 文字を小さく */
+        padding: 10px;            /* 画面の余白も詰める */
+    }
+
+    .grid {
+        grid-template-columns: 1fr;   /* 2列 → 1列にして縦積み */
     }
 
     .flex-row {
-        flex-direction: column;   /* 横並びを縦並びに戻す */
+        flex-direction: column;       /* 画像と文章を縦積みに */
+    }
+
+    .flex-row img {
+        width: 100%;                  /* 画像を画面幅に収める(900px固定をやめる) */
+    }
+
+    .warning summary {
+        font-size: 18px;              /* 見出しのデカ文字を抑える */
     }
 }
 
