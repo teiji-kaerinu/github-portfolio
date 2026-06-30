@@ -115,7 +115,7 @@ body{
 }
 .gallery {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;   /* 3列で並べる */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 15px;
 }
 
