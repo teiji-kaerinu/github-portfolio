@@ -151,6 +151,16 @@ th{color: #a78bfa; letter-spacing: 2px; padding:8px 12px; text-align:left;}
 tbody tr:hover{background: rgba(167,139,250,0.15);}
 td{padding: 10px 12px; border-bottom: 1px solid rgba(255, 255, 255,0.05);} 
 img{width:100%; border-radius:8px;}
+/* 画面の幅が600px以下のとき(=スマホ)だけ、この中身を適用する */
+@media (max-width: 600px) {
+    body {
+        font-size: 16px;   /* スマホでは文字を小さく */
+    }
+
+    .flex-row {
+        flex-direction: column;   /* 横並びを縦並びに戻す */
+    }
+}
 </style>
 </head>
 <body>
