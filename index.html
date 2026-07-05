@@ -188,7 +188,27 @@ img{width:100%; border-radius:8px;}
         font-size: 0.85em;    /* 文字を小さく */
     }
 }
+#lightbox {
+    display: none;              /* 普段は隠しておく */
+    position: fixed;            /* 画面に貼り付けて動かない */
+    top: 0; left: 0;
+    width: 100%; height: 100%;  /* 画面全体を覆う */
+    background: rgba(0,0,0,0.9); /* 半透明の黒幕 */
+    justify-content: center;    /* 中の画像を中央に */
+    align-items: center;
+    z-index: 100;               /* 他の全要素より手前に出す */
+    cursor: pointer;
+}
 
+#lightbox.open {                /* openクラスがついたら表示 */
+    display: flex;
+}
+
+#lightbox img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 10px;
+}
 
 </style>
 </head>
@@ -315,5 +335,28 @@ img{width:100%; border-radius:8px;}
     
 
 </main>
+
+<div id="lightbox">
+    <img id="lightbox-img" src="">
+</div>
+<script>
+    // ① HTMLの部品を「探して」変数に入れる
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const artImages = document.querySelectorAll('.art img');
+
+    // ② ギャラリーの全画像に「クリックされたら」の反応をつける
+    artImages.forEach(function(img) {
+        img.addEventListener('click', function() {
+            lightboxImg.src = img.src;      // 幕の画像を、クリックした絵に差し替え
+            lightbox.classList.add('open'); // 幕にopenクラスをつけて表示
+        });
+    });
+
+    // ③ 黒幕をクリックしたら閉じる
+    lightbox.addEventListener('click', function() {
+        lightbox.classList.remove('open');  // openクラスを外して非表示
+    });
+</script>
 </body>
 </html>
