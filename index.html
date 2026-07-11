@@ -159,6 +159,32 @@ th{color: #a78bfa; letter-spacing: 2px; padding:8px 12px; text-align:left;}
 tbody tr:hover{background: rgba(167,139,250,0.15);}
 td{padding: 10px 12px; border-bottom: 1px solid rgba(255, 255, 255,0.05);} 
 img{width:100%; border-radius:8px;}
+
+#lightbox{
+    display: none;              /* 普段は隠しておく */
+    position: fixed;            /* 画面に貼り付けて動かない */
+    top: 0; left: 0;
+    width: 100%; height: 100%;  /* 画面全体を覆う */
+    background: rgba(0,0,0,0.9); /* 半透明の黒幕 */
+    justify-content: center;    /* 中の画像を中央に */
+    align-items: center;
+    z-index: 100;               /* 他の全要素より手前に出す */
+    cursor: pointer;/*追加 */
+}
+
+#lightbox open {          /* openクラスがついたら表示 */
+    display: flex;
+}   
+
+#lightbox img {
+    width: auto;        /* ← 追加。width:100%を打ち消す */
+    height: auto;       /* ← 追加 */
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 10px;
+}
+
+
 /* 画面の幅が600px以下のとき(=スマホ)だけ、この中身を適用する */
 
 @media (max-width: 600px) {
@@ -188,29 +214,8 @@ img{width:100%; border-radius:8px;}
         font-size: 0.85em;    /* 文字を小さく */
     }
 }
-#lightbox {
-    display: none;              /* 普段は隠しておく */
-    position: fixed;            /* 画面に貼り付けて動かない */
-    top: 0; left: 0;
-    width: 100%; height: 100%;  /* 画面全体を覆う */
-    background: rgba(0,0,0,0.9); /* 半透明の黒幕 */
-    justify-content: center;    /* 中の画像を中央に */
-    align-items: center;
-    z-index: 100;               /* 他の全要素より手前に出す */
-    cursor: pointer;/*追加
-}
 
-#lightbox.open {                /* openクラスがついたら表示 */
-    display: flex;
-}
 
-#lightbox img {
-    width: auto;        /* ← 追加。width:100%を打ち消す */
-    height: auto;       /* ← 追加 */
-    max-width: 90%;
-    max-height: 90%;
-    border-radius: 10px;
-}
 
 </style>
 </head>
