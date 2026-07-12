@@ -186,21 +186,6 @@ img{width:100%; border-radius:8px;}
     border-radius: 10px;
 }
 
-#tab{
-    display: none;              /* 普段は隠しておく */
-
-}
-#tab.open {          /* openクラスがついたら表示 */
-    display: flex;
-}   
-
-#tab img{
-    width: 750;
-    flex-shrink: 0;
-}
-#tab p{
-    flex: 1;
-}
 /* 画面の幅が600px以下のとき(=スマホ)だけ、この中身を適用する */
 
 @media (max-width: 600px) {
@@ -255,7 +240,12 @@ img{width:100%; border-radius:8px;}
 .btn a.is-active {
         background-color: #ececec;
 }
-
+.panel {
+    display: none;          /* パネルは普段隠す */
+}
+.panel.is-active {
+    display: block;         /* is-activeが付いたパネルだけ表示 */
+}
 </style>
 </head>
 <body>
@@ -345,27 +335,29 @@ img{width:100%; border-radius:8px;}
 
 
     <section class="card">
-    <h2>個人的好きなキャラNo.3<span class="accentyellow">-篁唯依-</span></h2>
+        <h2>個人的好きなキャラNo.3<span class="accentyellow">-篁唯依-</span></h2>
 
-    <div class="tab-btn">
-        <div class="btn">篁唯依 - 旋回</div>
+        <!-- ボタン2個 -->
+        <div class="tab-btn">
+            <div class="btn"><a class="tab-link is-active">篁唯依 - 旋回</a></div>
+            <div class="btn"><a class="tab-link">肉じゃが</a></div>
+        </div>
+
+            <!-- パネル2個（最初の1枚だけ is-active） -->
+        <div class="panel is-active">
             <div class="flex-row">
                 <img src="images/イラスト3.png">
-                <p>譜代武家「篁家」現在当主。数年前、衛士訓練学校で寝食を共にした級友とともに、戦火に今まさに燃え尽きようとする帝都京都で防衛戦に参加。訓練兵の手腕では人類の宿敵BETAに叶うはずもなく、親友を目の前で惨殺され、「撃ってよ、唯依」……、最期の望みを弱さ所以に聞き入れることもできずただ震えるばかりでいた。心身を蝕むトラウマを抱える。<br>
-                    あの惨劇から幾数年、戦術機を駆り戦場で躍進を重ね、中尉にまで階級を上げるなど譜代武家として殿下に恥じない振る舞いを続ける。しかし、今だ心の傷は癒えないでいる。それでも、篁家当主として、父に恥じない人間になるため、己の一振りを磨き続けていた。そんな時、突然国連軍開発チームへの出向を命じられる。それは、事実的な前線からの追放でもあった。ユウヤ・ブリッジスからつけられた呼称は「ジャパニーズドール」。
-                </p>
+                <p>譜代武家「篁家」現在当主。……ジャパニーズドール」。</p>
             </div>
-  
-    </div>
+        </div>
 
-
-    <div class="flex-row">
-        <img src="images/002.png">
-        <p>唯依姫はアメリカン味覚のユウヤのために肉じゃがに初手でBBQソースを入れてくれる（確信）。
-        </p>
-    </div>
-
-</section>
+        <div class="panel">
+            <div class="flex-row">
+                <img src="images/002.png">
+                <p>唯依姫はアメリカン味覚のユウヤのために肉じゃがに初手でBBQソースを入れてくれる（確信）。</p>
+            </div>
+        </div>
+    </section>
 
     <section class="firstcard">
         <h2><span class="accentpurple">イラスト</span>ギャラリー</h2>
@@ -407,10 +399,6 @@ img{width:100%; border-radius:8px;}
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightbox-img');
     const artImages = document.querySelectorAll('.art img');
-    const tab = document.getElementById('tab');
-    const tabImg = document.getElementById('tab-img');
-
-
 
     // ② ギャラリーの全画像に「クリックされたら」の反応をつける
     artImages.forEach(function(img) {
@@ -426,11 +414,22 @@ img{width:100%; border-radius:8px;}
         lightbox.classList.remove('open');  // openクラスを外して非表示
     });
 
-        // ④ タブに「クリックされたら」の反応をつける
-    tab.forEach('click', function(){
-        tab.classList.remove('open');  // openクラスを外して非表示
-        tab.classList.add('open');  // openクラスを外して非表示
+    // ④ タブ切り替え
+    const tabLinks = document.querySelectorAll('.tab-link');  // ボタン全部
+    const panels = document.querySelectorAll('.panel');       // パネル全部
+
+    tabLinks.forEach(function(link, i) {     // ← iが「何番目か」を教えてくれる
+        link.addEventListener('click', function() {
+
+            // (a) まず全部から is-active を外す（全員リセット）
+            tabLinks.forEach(function(l) { l.classList.remove('is-active'); });
+            panels.forEach(function(p) { p.classList.remove('is-active'); });
+
+            // (b) 押したボタンと、対応するパネルに is-active をつける
+            link.classList.add('is-active');
+            panels[i].classList.add('is-active');
         });
+    });
 
 
 </script>
