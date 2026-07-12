@@ -108,12 +108,13 @@ body{
     flex-direction: column;       /* 画像と文章を縦積みに */
 }
 .flex-row img{
-    width: 900px;
+    width: 750;
     flex-shrink: 0;
 }
 .flex-row p{
     flex: 1;
 }
+
 .full-width {
     grid-column: 1 / -1;
 }
@@ -185,7 +186,21 @@ img{width:100%; border-radius:8px;}
     border-radius: 10px;
 }
 
+#tab{
+    display: none;              /* 普段は隠しておく */
 
+}
+#tab.open {          /* openクラスがついたら表示 */
+    display: flex;
+}   
+
+#tab img{
+    width: 750;
+    flex-shrink: 0;
+}
+#tab p{
+    flex: 1;
+}
 /* 画面の幅が600px以下のとき(=スマホ)だけ、この中身を適用する */
 
 @media (max-width: 600px) {
@@ -216,13 +231,36 @@ img{width:100%; border-radius:8px;}
     }
 }
 
+.tab-btn {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
 
+.btn {
+        flex-basis: 30%;
+        text-align: center;
+}
+.btn a {
+        display: block;
+        position: relative;
+        font-size: 16px;
+        padding: 8px;
+        text-decoration: none;
+        line-height: 1.2;
+        color: #181716;
+        background-color:  #a78bfa;
+        cursor: pointer;
+}
+.btn a.is-active {
+        background-color: #ececec;
+}
 
 </style>
 </head>
 <body>
 <h1><span class="orbitron">Muv-Luv Alternative</span>大好きな俺（定時カエレーヌ）がマブラヴ等の二次創作イラストを作り、俺という人生にとってどれだけマブラヴが影響を与えたのかをまとめたサイト</h1>
-<h2>あとついでにhtml&cssの練習も兼ねてます</h2>
+<h2>あとついでにhtml&css&jsの練習も兼ねてます</h2>
 <main class="grid">
 
 
@@ -245,7 +283,7 @@ img{width:100%; border-radius:8px;}
                 <p>　そんなこんなで、何も考えず友達が一人もいない自称進学校に入学。正直、最初から高校生活に躓いていた。そう、俺は生まれてこの方自分から話しかけて友達を作ったことがなかった。コミュ障で、プライドだけ高い、そんな厨二丸出しのガキだった俺にとって、知らねー奴に話しかけるという行動はめちゃくちゃハードル高かった。<br>
                     5月のゴールデンウィーク、景観豊かな自然教室で親睦を深め、自称進学校故に課題とかめっちゃ多いからそれに耐えれるような根性つけていこうぜイベントが起きるまで、俺は教室の誰とも話すことができなかったのだ。まさに、ボッチ丸出しのまま俺の高校生活は幕を開けたというわけだ。厨二病丸出しだから友達出来ないんだろと今になって思う(悲しい)</p>
                     
-                <p>　（なんやかんやあって二浪したのち地元の公立大の工学部に入る）。大学四年の12月になる。当時の俺は、留年に酷くおびえていた。一応、四年の後期にして、卒業研究以外の単位を取り終えてはいた。2浪してるもんだから、1年でも留年したら新卒じゃなくなる……。まともな社会人になって親孝行をもくろんでいた自分にとって、人生最大級の脅威だったともいえる。それでも、俺は本気で努力できなかった。毎日研究室に行ったり、週一回の教授の授業には出席していた。でも、本気で勉強することは結局なかった。2時間近い通学時間だったり、周りの同級生は2年下だったり、何かと理由をつけて俺は本気になれていなかった。今思えば、もっと勉強しとけばよかったと本気で思う。そんなうだつの上がらない毎日の中、Steamで出会ったのが<span class="accentpurple">マブラヴ</span>なのである。</p>
+                <p>　（なんやかんやあって高校卒業後半分引きこもりニートになった後、地元の公立大の工学部に入る）。大学四年の12月になる。当時の俺は、留年に酷くおびえていた。一応、四年の後期にして、卒業研究以外の単位を取り終えてはいた。しかし、卒業研究という落としたらその時点でゲームオーバーという理不尽ゲーの極み……。まともな社会人になって親孝行をもくろんでいた自分にとって、人生最大級の脅威だったともいえる。それでも、俺は本気で努力できなかった。毎日研究室に行ったり、週一回の教授の授業には出席していた。でも、本気で勉強することは結局なかった。2時間近い通学時間だったり、周りの同級生は2年下だったり、何かと理由をつけて俺は本気になれていなかった。今思えば、もっと勉強しとけばよかったと本気で思う。そんなうだつの上がらない毎日の中、Steamで出会ったのが<span class="accentpurple">マブラヴ</span>なのである。</p>
                 </div>
         </details>
     </section>
@@ -309,12 +347,17 @@ img{width:100%; border-radius:8px;}
     <section class="card">
     <h2>個人的好きなキャラNo.3<span class="accentyellow">-篁唯依-</span></h2>
 
-    <div class="flex-row">
-        <img src="images/001.png">
-        <p>譜代武家「篁家」現在当主。数年前、衛士訓練学校で寝食を共にした級友とともに、戦火に今まさに燃え尽きようとする帝都京都で防衛戦に参加。訓練兵の手腕では人類の宿敵BETAに叶うはずもなく、親友を目の前で惨殺され、「撃ってよ、唯依」……、最期の望みを弱さ所以に聞き入れることもできずただ震えるばかりでいた。心身を蝕むトラウマを抱える。<br>
-            あの惨劇から幾数年、戦術機を駆り戦場で躍進を重ね、中尉にまで階級を上げるなど譜代武家として殿下に恥じない振る舞いを続ける。しかし、今だ心の傷は癒えないでいる。それでも、篁家当主として、父に恥じない人間になるため、己の一振りを磨き続けていた。そんな時、突然国連軍開発チームへの出向を命じられる。それは、事実的な前線からの追放でもあった。ユウヤ・ブリッジスからつけられた呼称は「ジャパニーズドール」。
-        </p>
+    <div class="tab-btn">
+        <div class="btn">篁唯依 - 旋回</div>
+            <div class="flex-row">
+                <img src="images/イラスト3.png">
+                <p>譜代武家「篁家」現在当主。数年前、衛士訓練学校で寝食を共にした級友とともに、戦火に今まさに燃え尽きようとする帝都京都で防衛戦に参加。訓練兵の手腕では人類の宿敵BETAに叶うはずもなく、親友を目の前で惨殺され、「撃ってよ、唯依」……、最期の望みを弱さ所以に聞き入れることもできずただ震えるばかりでいた。心身を蝕むトラウマを抱える。<br>
+                    あの惨劇から幾数年、戦術機を駆り戦場で躍進を重ね、中尉にまで階級を上げるなど譜代武家として殿下に恥じない振る舞いを続ける。しかし、今だ心の傷は癒えないでいる。それでも、篁家当主として、父に恥じない人間になるため、己の一振りを磨き続けていた。そんな時、突然国連軍開発チームへの出向を命じられる。それは、事実的な前線からの追放でもあった。ユウヤ・ブリッジスからつけられた呼称は「ジャパニーズドール」。
+                </p>
+            </div>
+  
     </div>
+
 
     <div class="flex-row">
         <img src="images/002.png">
@@ -354,15 +397,25 @@ img{width:100%; border-radius:8px;}
 <div id="lightbox">
     <img id="lightbox-img" src="">
 </div>
+
+<div id="tab">
+    <img id="tab-img" src="">
+</div>
+
 <script>
     // ① HTMLの部品を「探して」変数に入れる
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightbox-img');
     const artImages = document.querySelectorAll('.art img');
+    const tab = document.getElementById('tab');
+    const tabImg = document.getElementById('tab-img');
+
+
 
     // ② ギャラリーの全画像に「クリックされたら」の反応をつける
     artImages.forEach(function(img) {
         img.addEventListener('click', function() {
+            console.log('クリックされた画像:', img.src);   // ← 追加
             lightboxImg.src = img.src;      // 幕の画像を、クリックした絵に差し替え
             lightbox.classList.add('open'); // 幕にopenクラスをつけて表示
         });
@@ -372,6 +425,14 @@ img{width:100%; border-radius:8px;}
     lightbox.addEventListener('click', function() {
         lightbox.classList.remove('open');  // openクラスを外して非表示
     });
+
+        // ④ タブに「クリックされたら」の反応をつける
+    tab.forEach('click', function(){
+        tab.classList.remove('open');  // openクラスを外して非表示
+        tab.classList.add('open');  // openクラスを外して非表示
+        });
+
+
 </script>
 </body>
 </html>
